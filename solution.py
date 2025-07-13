@@ -1,23 +1,7 @@
-def solve():
+import sys
+
+def get_ans(n, portals, q, queries):
     MOD = 10**9 + 7
-    
-    # Read input
-    n = int(input())
-    input()  # Skip the "3"
-    
-    portals = []
-    for _ in range(n):
-        r, b, w = map(int, input().split())
-        portals.append([r, b, w])
-    
-    q = int(input())
-    input()  # Skip the "4"
-    
-    queries = []
-    for _ in range(q):
-        query = list(map(int, input().split()))
-        queries.append(query)
-    
     xor_result = 0
     
     for query in queries:
@@ -59,4 +43,17 @@ def solve():
     
     return xor_result
 
-print(solve())
+def main():
+    n = int(sys.stdin.readline().strip())
+    portals = []
+    for _ in range(n):
+        portals.append(list(map(lambda x: int(x), sys.stdin.readline().strip().split(" "))))
+    q = int(sys.stdin.readline().strip())
+    queries = []
+    for _ in range(q):
+        queries.append(list(map(lambda x: int(x), sys.stdin.readline().strip().split(" "))))
+    result = get_ans(n, portals, q, queries)
+    print(result)
+
+if __name__ == "__main__":
+    main()
