@@ -1,30 +1,7 @@
-def solve():
+import sys
+
+def calc(N, M, K, dx, dy, X, Y):
     MOD = 998244353
-    
-    # Read input
-    N = int(input())
-    M = int(input())
-    K = int(input())
-    
-    # Read dx values
-    dx = []
-    for _ in range(K):
-        dx.append(int(input()))
-    
-    # Read dy values
-    dy = []
-    for _ in range(K):
-        dy.append(int(input()))
-    
-    # Read X coordinates of forbidden zones
-    X = []
-    for _ in range(M):
-        X.append(int(input()))
-    
-    # Read Y coordinates of forbidden zones
-    Y = []
-    for _ in range(M):
-        Y.append(int(input()))
     
     # Create set of forbidden zones
     forbidden = set()
@@ -50,6 +27,26 @@ def solve():
     
     # Sum all valid positions after N jumps
     result = sum(dp[N].values()) % MOD
+    return result
+
+def main():
+    N = int(sys.stdin.readline().strip())
+    M = int(sys.stdin.readline().strip())
+    K = int(sys.stdin.readline().strip())
+    dx = []
+    for _ in range(K):
+        dx.append(int(sys.stdin.readline().strip()))
+    dy = []
+    for _ in range(K):
+        dy.append(int(sys.stdin.readline().strip()))
+    X = []
+    for _ in range(M):
+        X.append(int(sys.stdin.readline().strip()))
+    Y = []
+    for _ in range(M):
+        Y.append(int(sys.stdin.readline().strip()))
+    result = calc(N, M, K, dx, dy, X, Y)
     print(result)
 
-solve()
+if __name__ == "__main__":
+    main()
